@@ -1,9 +1,10 @@
-#%%
+# %%
 import functools as ft
 import pandas as pd
 import os
 import itertools
 from sklearn.cluster import KMeans
+
 
 # dirname=os.path.dirname(__file__)
 # filepath=os.path.join(dirname,filepath)
@@ -133,7 +134,7 @@ def mergeall(*dfs):
     return pd.concat(dfs)
 
 
-#%%
+# %%
 # 2015
 demand_df = get_demand_daily()
 filepath_pv = os.path.join(
@@ -151,7 +152,7 @@ wind_df.rename(columns={"electricity": "wind"})
 data_2015 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
 data_2015.write_main_df()
 
-#%%
+# %%
 # 2016
 filepath_demand = os.path.join(
     os.path.abspath(""), "demand_data_formatted", "Average-Demand-2016.xlsx"
@@ -173,7 +174,7 @@ wind_df.rename(columns={"electricity": "wind"})
 data_2016 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
 data_2016.write_main_df()
 
-#%%
+# %%
 # 2017
 
 filepath_demand = os.path.join(
@@ -196,7 +197,7 @@ wind_df.rename(columns={"electricity": "wind"})
 data_2017 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
 data_2017.write_main_df()
 
-#%%
+# %%
 # 2018
 filepath_demand = os.path.join(
     os.path.abspath(""), "demand_data_formatted", "Average-Demand-2018.xlsx"
@@ -218,7 +219,7 @@ wind_df.rename(columns={"electricity": "wind"})
 data_2018 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
 data_2018.write_main_df()
 
-#%%
+# %%
 # all dataframes
 all_data_df = mergeall(
     data_2015.cluster_input,
@@ -226,7 +227,9 @@ all_data_df = mergeall(
     data_2017.cluster_input,
     data_2018.cluster_input,
 )
-#%%
+
+
+# %%
 # clustering
 class cluster_data:
     def __init__(self, all_data_df, n_clusters):
@@ -244,7 +247,7 @@ class cluster_data:
         self.inertia = self.km.inertia_
 
 
-#%%
+# %%
 # finding best number of reprenstative days
 
 inertia_list = []

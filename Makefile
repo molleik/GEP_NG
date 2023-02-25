@@ -24,6 +24,11 @@ dependencies:
 	pip show -q poetry || pip install poetry
 	poetry install
 
+poetry.lock:
+	pip show -q poetry || pip install poetry
+	poetry update
+
+
 
 
 
