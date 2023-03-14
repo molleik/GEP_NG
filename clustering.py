@@ -81,7 +81,7 @@ def get_demand_daily():
         dirname = os.path.abspath("")
         # filepath = os.path.join(dirname, filepath)
         filepath = os.path.join(
-            dirname, "demand_data_formatted", "2015_demand_data", f"{m}2015.xls"
+            dirname, "data", "demand_data_formatted", "2015_demand_data", f"{m}2015.xls"
         )
         demand_df[i] = pd.read_excel(
             filepath, "Totals", skiprows=37, nrows=24, usecols="B:AF"
@@ -94,7 +94,7 @@ def get_demand_daily():
     return demand_df_formatted
 
 
-class data_oneyear:
+class Data_one_year:
     def __init__(self, demand_df, wind_df, solar_df, max_demand):
         """all data frames will have two columns, datetime and value in addition the in"""
         self.demand_df = demand_df
@@ -134,104 +134,8 @@ def mergeall(*dfs):
     return pd.concat(dfs)
 
 
-# %%
-# 2015
-demand_df = get_demand_daily()
-filepath_pv = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "PV", "PV_baalbeck_2015.csv"
-)
-filepath_wind = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "Wind", "Wind_Akkar_2015.csv"
-)
-pv_df = get_supply(filepath_pv)
-pv_df.rename(columns={"electricity": "pv"})
-
-wind_df = get_supply(filepath_wind)
-wind_df.rename(columns={"electricity": "wind"})
-
-data_2015 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
-data_2015.write_main_df()
-
-# %%
-# 2016
-filepath_demand = os.path.join(
-    os.path.abspath(""), "demand_data_formatted", "Average-Demand-2016.xlsx"
-)
-demand_df = get_demand_monthly(filepath_demand)
-
-filepath_pv = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "PV", "PV_baalbeck_2016.csv"
-)
-filepath_wind = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "Wind", "Wind_Akkar_2016.csv"
-)
-pv_df = get_supply(filepath_pv)
-pv_df.rename(columns={"electricity": "pv"})
-
-wind_df = get_supply(filepath_wind)
-wind_df.rename(columns={"electricity": "wind"})
-
-data_2016 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
-data_2016.write_main_df()
-
-# %%
-# 2017
-
-filepath_demand = os.path.join(
-    os.path.abspath(""), "demand_data_formatted", "Average-Demand-2017.xlsx"
-)
-demand_df = get_demand_monthly(filepath_demand)
-
-filepath_pv = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "PV", "PV_baalbeck_2017.csv"
-)
-filepath_wind = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "Wind", "Wind_Akkar_2017.csv"
-)
-pv_df = get_supply(filepath_pv)
-pv_df.rename(columns={"electricity": "pv"})
-
-wind_df = get_supply(filepath_wind)
-wind_df.rename(columns={"electricity": "wind"})
-
-data_2017 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
-data_2017.write_main_df()
-
-# %%
-# 2018
-filepath_demand = os.path.join(
-    os.path.abspath(""), "demand_data_formatted", "Average-Demand-2018.xlsx"
-)
-demand_df = get_demand_monthly(filepath_demand)
-
-filepath_pv = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "PV", "PV_baalbeck_2018.csv"
-)
-filepath_wind = os.path.join(
-    os.path.abspath(""), "supply_data_formatted", "Wind", "Wind_Akkar_2018.csv"
-)
-pv_df = get_supply(filepath_pv)
-pv_df.rename(columns={"electricity": "pv"})
-
-wind_df = get_supply(filepath_wind)
-wind_df.rename(columns={"electricity": "wind"})
-
-data_2018 = data_oneyear(demand_df, wind_df, pv_df, demand_df["demand"].max())
-data_2018.write_main_df()
-
-# %%
-# all dataframes
-all_data_df = mergeall(
-    data_2015.cluster_input,
-    data_2016.cluster_input,
-    data_2017.cluster_input,
-    data_2018.cluster_input,
-)
-
-
-# %%
 # clustering
-class cluster_data:
+class Cluster_data:
     def __init__(self, all_data_df, n_clusters):
         self.df = all_data_df
         self.km = KMeans(
@@ -245,35 +149,3 @@ class cluster_data:
         self.y_km = self.km.fit_predict(self.df)
         self.centroids = self.km.cluster_centers_
         self.inertia = self.km.inertia_
-
-
-# %%
-# finding best number of reprenstative days
-
-inertia_list = []
-for n in range(1, 30):
-    inertia_list.append(cluster_data(all_data_df, n).inertia)
-
-
-# %%
-import matplotlib.pyplot as plt
-
-plt.plot(range(1, 30), inertia_list)
-plt.savefig("inertia.png")
-plt.show()
-
-#   def __init__(self, demand_df,wind_df,solar_df):
-# all data frames should have 2 columns, date and the corresponding value
-
-#      self.demand=demand_df
-#     self.wind=wind_df
-
-#    self.solar=solar_df
-
-
-# def process_data(self):
-#   self.demand.interpolate(method='linear', limit_direction='forward', axis=0,inplace=True)
-#  dfs = [self.demand, self.wind,self.solar]
-# self.df=ft.reduce(lambda left, right: pd.merge(left, right, on='name'), dfs)
-
-# %%

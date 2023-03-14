@@ -12,6 +12,11 @@ scikit-learn ="*"
 black = "*"
 mypy = "*"
 matplotlib= "*"
+xlrd = "*"
+openpyxl = "*"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.21.3"
 
 [build-system]
 requires = ["poetry-core"]
