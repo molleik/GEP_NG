@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import itertools
 from sklearn.cluster import KMeans
+import numpy as np
 
 
 # dirname=os.path.dirname(__file__)
@@ -149,3 +150,7 @@ class Cluster_data:
         self.y_km = self.km.fit_predict(self.df)
         self.centroids = self.km.cluster_centers_
         self.inertia = self.km.inertia_
+
+        self.cluster_weights = [
+            len(np.where(self.km.labels_ == i)[0]) for i in range(n_clusters)
+        ]
