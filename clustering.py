@@ -36,11 +36,17 @@ def get_demand_monthly(filepath):
 def get_supply(filepath, format="%m/%d/%Y %H:%M"):
     """this gets the supply values and formats it"""
     supply_df = pd.read_csv(filepath)
-    supply_df.drop(columns=["local_time"], inplace=True)
+    supply_df.drop(columns=["datetime"], inplace=True)
+    supply_df.rename(columns={"local_time": "datetime"}, inplace=True)
     supply_df["datetime"] = pd.to_datetime(
         supply_df["datetime"],
     )
     return supply_df
+
+
+def get_supply_multiple_years(*filepaths):
+    dfs = map(get_supply, filepaths)
+    return mergeall(*dfs)
 
 
 def fill_daily_demand_data(demand_df, dt):
