@@ -104,9 +104,9 @@ def get_demand_daily():
 class Data_one_year:
     def __init__(self, demand_df, wind_df, solar_df, max_demand):
         """all data frames will have two columns, datetime and value in addition the in"""
-        self.demand_df = demand_df
-        self.wind_df = wind_df
-        self.solar_df = solar_df
+        self.demand_df = demand_df.copy()
+        self.wind_df = wind_df.copy()
+        self.solar_df = solar_df.copy()
         self.demand_df["demand"] = self.demand_df["demand"] / max_demand
         self.wind_df["electricity"] = (
             self.wind_df["electricity"] / self.wind_df["electricity"].max()
