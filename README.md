@@ -1,4 +1,4 @@
-```markdown
+
 # Integrated Upstream Natural Gas and Electricity Planning 
 
 This repository contains data, code, and result files for a research paper entitled: Integrating upstream natural gas and electricity planning in times of energy transition, authored by Majd Olleik, Hussein Tarhini, and Hans Auer.
@@ -19,6 +19,7 @@ The model is applied to the case of Lebanon, a country in the Eastern Mediterran
 Please cite this work as: Olleik, M., Tarhini, H., Auer, H., Integrated Upstream Natural Gas and Electricity Planning Mathematical Formulation, 2024.
 
 ## Project Structure
+```markdown
 ├── Clustering/                            # Source codes and results for the generation of representative days
     ├── Data/                              # Data files used to generate the representative days       
 ├── Model/                                 # Model files
@@ -30,7 +31,7 @@ Please cite this work as: Olleik, M., Tarhini, H., Auer, H., Integrated Upstream
 │   └── Other sensitivities/               # Output files for some special sensitivities
 │   └── Summary/                           # Processed summary files of the results
 └── README.md                              # This README file
-
+```
 ## License
 This work is licensed under a [https://creativecommons.org/licenses/by/4.0/](Creative Commons Attribution 4.0 International License).
 
