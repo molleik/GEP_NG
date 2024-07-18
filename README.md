@@ -14,7 +14,7 @@ This project presents an integrated upstream natural gas and electricity plannin
 
 The model is applied to the case of Lebanon, a country in the Eastern Mediterranean region. A one-way and an extended sensitivity analyses on the main input parameters are performed. The data and results files are provided in their respective locations as further described in the [Project Structure](#project-structure) section.
 
-<!--**Reference**: [#](Integrating upstream natural gas and electricity planning in times of energy transition)-->
+<!--**Reference**: [Integrating upstream natural gas and electricity planning in times of energy transition](#)-->
 
 Please cite this work as: Olleik, M., Tarhini, H., Auer, H., Integrated Upstream Natural Gas and Electricity Planning Mathematical Formulation, 2024.
 
@@ -33,7 +33,7 @@ Please cite this work as: Olleik, M., Tarhini, H., Auer, H., Integrated Upstream
 └── README.md                              # This README file
 ```
 ## License
-This work is licensed under a [https://creativecommons.org/licenses/by/4.0/](Creative Commons Attribution 4.0 International License).
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
