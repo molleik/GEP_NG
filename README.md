@@ -21,14 +21,14 @@ Please cite this work as: Olleik, M., Tarhini, H., Auer, H., Integrated Upstream
 ## Project Structure
 ```markdown
 ├── Clustering/                            # Source codes and results for the generation of representative days
-    ├── Data/                              # Data files used to generate the representative days       
+    └── Data/                              # Data files used to generate the representative days       
 ├── Model/                                 # Model files
 │   ├── main_v0_3_nothreading.py           # Main script
-│   └── model_v0_6.py                      # Model formulation
+│   ├── model_v0_6.py                      # Model formulation
 │   └── input_file_v5.0.xlsx               # Input file for the model
 ├── Results/                               # Results and output files
-│   └── Extended sensitivity scenarios/    # Output files for the sensitivity scenarios
-│   └── Other sensitivities/               # Output files for some special sensitivities
+│   ├── Extended sensitivity scenarios/    # Output files for the sensitivity scenarios
+│   ├── Other sensitivities/               # Output files for some special sensitivities
 │   └── Summary/                           # Processed summary files of the results
 └── README.md                              # This README file
 ```
