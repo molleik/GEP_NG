@@ -1,7 +1,7 @@
 
 # Integrated Upstream Natural Gas and Electricity Planning 
 
-This repository contains data, code, and result files for a research paper entitled: [Integrating upstream natural gas and electricity planning in times of energy transition]([#](https://doi.org/10.1016/j.apenergy.2024.124490)).
+This repository contains data, code, and result files for a research paper entitled: [Integrating upstream natural gas and electricity planning in times of energy transition]((https://doi.org/10.1016/j.apenergy.2024.124490)).
 
 ## Table of Contents
 1. [Description](#description)
